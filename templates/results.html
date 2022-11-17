@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Results
+{% endblock title %}
+
+{% block content %}
+{% if character.name %}
+<h2>{{character.name}} Info:</h2>
+<p>Name: {{character.name}}</p>
+<p>Height in cm: {{character.height}}</p>
+<p>Weight in kg: {{character.mass}}</p>
+<p>Hair colour: {{character.hair_color}}</p>
+<p>Eye colour: {{character.eye_color}}</p>
+{% if homeworld.name %}
+<p>Homeworld: {{homeworld.name}}</p>
+{% endif %}
+<h2>Appeared in:</h2>
+<ul>
+  {% for film in films %}
+  <li>{{film.title}}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>ID doesn't exist</p>
+{% endif %}
+
+{% endblock content %}
