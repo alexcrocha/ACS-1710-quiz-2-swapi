@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,12 +9,22 @@
 
   <title>
     {% block title %}
+    Star Wars Character Search
     {% endblock title %}
   </title>
 </head>
-<body>
-  {% block content %}
 
-  {% endblock content %}
+<body>
+  <header>
+    <h1><a href="/">Star Wars Character Search</a></h1>
+  </header>
+  <main>
+    {% include 'includes/form.html' %}
+
+    {% block content %}
+
+    {% endblock content %}
+  </main>
 </body>
+
 </html>

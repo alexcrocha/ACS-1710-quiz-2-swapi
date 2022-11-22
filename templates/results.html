@@ -1,28 +1,43 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Results
+Star Wars Character Results
 {% endblock title %}
 
 {% block content %}
 {% if character.name %}
-<h2>{{character.name}} Info:</h2>
-<p>Name: {{character.name}}</p>
-<p>Height in cm: {{character.height}}</p>
-<p>Weight in kg: {{character.mass}}</p>
-<p>Hair colour: {{character.hair_color}}</p>
-<p>Eye colour: {{character.eye_color}}</p>
-{% if homeworld.name %}
-<p>Homeworld: {{homeworld.name}}</p>
-{% endif %}
-<h2>Appeared in:</h2>
-<ul>
-  {% for film in films %}
-  <li>{{film.title}}</li>
-  {% endfor %}
-</ul>
+<section>
+  <h2>{{character.name}}</h2>
+  <dl>
+    <dt>Name:</dt>
+    <dd>{{'-' if character.name == 'none' or character.name == 'unknown' else character.name}}</dd>
+    <dt>Height in cm:</dt>
+    <dd>{{'-' if character.height == 'none' or character.height == 'unknown' else character.height}}</dd>
+    <dt>Weight in kg:</dt>
+    <dd>{{'-' if character.mass == 'none' or character.mass == 'unknown' else character.mass}}</dd>
+    <dt>Hair colour:</dt>
+    <dd>{{'-' if character.hair_color == 'none' or character.hair_color == 'unknown' else character.hair_color}}</dd>
+    <dt>Eye colour:</dt>
+    <dd>{{'-' if character.eye_color == 'none' or character.eye_color == 'unknown' else character.eye_color}}</dd>
+    {% if homeworld %}
+    <dt>Homeworld:</dt>
+    <dd>{{'-' if homeworld.name == 'none' or homeworld.name == 'unknown' else homeworld.name}}</dd>
+    {% endif %}
+  </dl>
+</section>
+<section>
+
+  <h2>Appears in:</h2>
+  <ul>
+    {% for film in films %}
+    <li>{{film.title}}</li>
+    {% endfor %}
+  </ul>
+</section>
 {% else %}
-<p>ID doesn't exist</p>
+<section>
+  <h3>ID doesn't exist</h3>
+</section>
 {% endif %}
 
 {% endblock content %}

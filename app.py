@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
-    return render_template("form.html")
+    return render_template("base.html")
 
 
 @app.route("/results")
@@ -41,4 +41,4 @@ def results():
 
 if __name__ == "__main__":
     app.config["ENV"] = "development"
-    app.run(debug=True, port=3000)
+    app.run(debug=True, port=3001)
